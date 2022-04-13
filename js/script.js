@@ -110,7 +110,7 @@ function temporizador(){
 
             if(retorno == 0){
 
-                let progressoAtual = 0;
+                let progressoAtual = 0; 
                 let progressoFinal = 60;
                 let minutoAtual = 0
                 let horaAtual = 0
