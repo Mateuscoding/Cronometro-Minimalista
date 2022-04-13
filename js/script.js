@@ -13,42 +13,6 @@ const minutos = document.querySelector('#minutos')
 const progressHr = document.querySelector('#back-horas')
 const horas = document.querySelector('#horas')
 
-
-
-
-/* var segundos = document.getElementById("numbers")
-var minutos = document.querySelector('#minuto')
-var horas = document.querySelector('#horas')
-
-var sg = 0;
-var minuto = 0
-var hora = 0
-
-console.log(minuto)
-var numero = 0;
-
-
-function iniciar(){
-    var interval = setInterval(()=>{
-         sg++
-          minuto = Math.floor(sg/60)
-          hora = Math.floor(minuto/60)
-         segundos.innerHTML = sg%60
-         minutos.innerHTML = Math.floor(minuto%60)
-         horas.innerHTML = hora
-
-        }, 1);
-
-        console.log(interval)
-}
-
-function pausar(){
-    clearInterval(interval)
-} */
-
-
-
-
 // CIRCULAR PROGRESS
 var pause = false
 var sg 
@@ -180,7 +144,7 @@ function temporizador(){
                     iniciar.setAttribute('disabled')
 
 
-                }, 100)
+                }, 1000)
 
     
         }else{
