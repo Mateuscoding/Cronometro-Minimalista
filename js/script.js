@@ -110,37 +110,35 @@ function temporizador(){
 
             if(retorno == 0){
 
-
-                let segundoAtual = 50;
-                let segundoFinal = 60;
-                let minutoAtual = 59
-                let minutoFinal = 60
+                let progressoAtual = 0;
+                let progressoFinal = 60;
+                let minutoAtual = 0
                 let horaAtual = 0
 
                 sg = setInterval(()=> {
 
-                    segundoAtual++
+                    progressoAtual++
 
-                    localStorage.setItem("sgnd", segundoAtual)
+                    localStorage.setItem("sgnd", progressoAtual)
 
-                    if(segundoAtual < 10){
-                        segundos.textContent = `0${segundoAtual}`;
+                    if(progressoAtual < 10){
+                        segundos.textContent = `0${progressoAtual}`;
                         progressSg.style.background = `conic-gradient(
-                            #576574 ${segundoAtual * 6}deg,
-                            white ${segundoAtual * 6}deg
+                            #576574 ${progressoAtual * 6}deg,
+                            white ${progressoAtual * 6}deg
                         )`;
                     }else{
-                    segundos.textContent = `${segundoAtual}`;
+                    segundos.textContent = `${progressoAtual}`;
                     progressSg.style.background = `conic-gradient(
-                        #576574 ${segundoAtual * 6}deg,
-                        white ${segundoAtual * 6}deg
+                        #576574 ${progressoAtual * 6}deg,
+                        white ${progressoAtual * 6}deg
                     )`;
                 }
 
 
-                    if(segundoAtual == segundoFinal){
-                        segundoAtual = 0
-                        segundos.textContent = `${segundoAtual}0`;
+                    if(progressoAtual == progressoFinal){
+                        progressoAtual = 0
+                        segundos.textContent = `0${progressoAtual}`;
 
                       // atualizar minuto
                             minutoAtual++
@@ -160,9 +158,8 @@ function temporizador(){
                         localStorage.setItem("mnt", minutoAtual)
 
                         // atualizar hora
-                        if(minutoAtual == minutoFinal){
+                        if(minutoAtual == 60){
                             minutoAtual = 0;
-                            minutos.textContent = `${minutoAtual}0`
                             horaAtual++;
                             horas.textContent = `0${horaAtual}`;
                             progressHr.style.background = `conic-gradient(
@@ -180,16 +177,18 @@ function temporizador(){
                     localStorage.setItem("hr", horaAtual)
 
                     
+                    iniciar.setAttribute('disabled')
 
 
-                }, 1000)
+                }, 100)
 
     
         }else{
 
             
-            let segundoAtual = parseInt(localStorage.getItem('sgnd'))
-            let segundoFinal = 60;
+            let progressoAtual = parseInt(localStorage.getItem('sgnd'))
+            let progressoFinal = 60;
+            let progressoSpeed = 100;
 
             let minutoAtual = parseInt(localStorage.getItem('mnt'));
             let minutoFinal = 60;
@@ -200,29 +199,29 @@ function temporizador(){
 
             sg = setInterval(()=> {
 
-                segundoAtual++
+                progressoAtual++
 
 
-                if(segundoAtual < 10){
-                    segundos.textContent = `0${segundoAtual}`;
+                if(progressoAtual < 10){
+                    segundos.textContent = `0${progressoAtual}`;
                     progressSg.style.background = `conic-gradient(
-                        #576574 ${segundoAtual * 6}deg,
-                        white ${segundoAtual * 6}deg
+                        #576574 ${progressoAtual * 6}deg,
+                        white ${progressoAtual * 6}deg
                     )`;
                 }else{
-                segundos.textContent = `${segundoAtual}`;
+                segundos.textContent = `${progressoAtual}`;
                 progressSg.style.background = `conic-gradient(
-                    #576574 ${segundoAtual * 6}deg,
-                    white ${segundoAtual * 6}deg
+                    #576574 ${progressoAtual * 6}deg,
+                    white ${progressoAtual * 6}deg
                 )`;
             }
 
-            localStorage.setItem("sgnd", segundoAtual)
+            localStorage.setItem("sgnd", progressoAtual)
 
 
-                if(segundoAtual == segundoFinal){
-                    segundoAtual = 0
-                    segundos.textContent = `${segundoAtual}`;
+                if(progressoAtual == progressoFinal){
+                    progressoAtual = 0
+                    segundos.textContent = `0${progressoAtual}`;
 
                     // atualizar minutos
                         minutoAtual++
@@ -267,5 +266,7 @@ function temporizador(){
 
 
             }, 1000)
-}
+
+
+    }
 }
